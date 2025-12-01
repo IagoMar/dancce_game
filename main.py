@@ -1,180 +1,202 @@
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    bailarin.setPosition(100, 100)
+def on_down_pressed():
+    global note
+    bailarin.set_position(100, 100)
     note = 4
-})
-function proyectiles () {
+controller.down.on_event(ControllerButtonEvent.PRESSED, on_down_pressed)
+
+def proyectiles():
+    global carril, esquerra, dreta, up, down, speed
     carril = randint(1, 4)
-    if (carril == 1) {
-        esquerra = sprites.create(img`
-            2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 
-            2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 2 
-            2 2 2 2 2 1 1 1 2 2 2 2 2 2 2 2 
-            2 2 2 2 1 1 1 1 2 2 2 2 2 2 2 2 
-            2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 
-            2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 
-            2 2 2 2 1 1 1 1 2 2 2 2 2 2 2 2 
-            2 2 2 2 2 1 1 1 2 2 2 2 2 2 2 2 
-            2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 2 
-            2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 
-            `, SpriteKind.Projectile)
-        esquerra.setVelocity(0, speed)
-        esquerra.setPosition(30, 8)
-    } else if ((0 as any) == (2 as any)) {
-        dreta = sprites.create(img`
-            8 8 8 8 8 8 8 8 1 8 8 8 8 8 8 8 
-            8 8 8 8 8 8 8 8 1 1 8 8 8 8 8 8 
-            8 8 8 8 8 8 8 8 1 1 1 8 8 8 8 8 
-            8 8 8 8 8 8 8 8 1 1 1 1 8 8 8 8 
-            8 8 8 8 8 8 8 8 1 1 1 1 1 8 8 8 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 8 8 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 8 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 8 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 8 8 
-            8 8 8 8 8 8 8 8 1 1 1 1 1 8 8 8 
-            8 8 8 8 8 8 8 8 1 1 1 1 8 8 8 8 
-            8 8 8 8 8 8 8 8 1 1 1 8 8 8 8 8 
-            8 8 8 8 8 8 8 8 1 1 8 8 8 8 8 8 
-            8 8 8 8 8 8 8 8 1 8 8 8 8 8 8 8 
-            `, SpriteKind.Projectile)
-    } else if (carril == 3) {
-        up = sprites.create(img`
-            a a a a a a a 1 a a a a a a a 
-            a a a a a a 1 1 1 a a a a a a 
-            a a a a a 1 1 1 1 1 a a a a a 
-            a a a a 1 1 1 1 1 1 1 a a a a 
-            a a a 1 1 1 1 1 1 1 1 1 a a a 
-            a a 1 1 1 1 1 1 1 1 1 1 1 a a 
-            a 1 1 1 1 1 1 1 1 1 1 1 1 1 a 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            a a a a a 1 1 1 1 1 a a a a a 
-            a a a a a 1 1 1 1 1 a a a a a 
-            a a a a a 1 1 1 1 1 a a a a a 
-            a a a a a 1 1 1 1 1 a a a a a 
-            a a a a a 1 1 1 1 1 a a a a a 
-            a a a a a 1 1 1 1 1 a a a a a 
-            a a a a a 1 1 1 1 1 a a a a a 
-            a a a a a 1 1 1 1 1 a a a a a 
-            `, SpriteKind.Projectile)
-        up.setVelocity(0, speed)
-        up.setPosition(60, 8)
-    } else {
-        down = sprites.create(img`
-            5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 
-            5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 
-            5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 
-            5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 
-            5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 
-            5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 
-            5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 
-            5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            5 1 1 1 1 1 1 1 1 1 1 1 1 1 5 
-            5 5 1 1 1 1 1 1 1 1 1 1 1 5 5 
-            5 5 5 1 1 1 1 1 1 1 1 1 5 5 5 
-            5 5 5 5 1 1 1 1 1 1 1 5 5 5 5 
-            5 5 5 5 5 1 1 1 1 1 5 5 5 5 5 
-            5 5 5 5 5 5 1 1 1 5 5 5 5 5 5 
-            5 5 5 5 5 5 5 1 5 5 5 5 5 5 5 
-            `, SpriteKind.Projectile)
-        down.setVelocity(0, speed)
-        down.setPosition(100, 8)
-    }
+    if carril == 1:
+        esquerra = sprites.create(img("""
+                2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2
+                2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 2
+                2 2 2 2 2 1 1 1 2 2 2 2 2 2 2 2
+                2 2 2 2 1 1 1 1 2 2 2 2 2 2 2 2
+                2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2
+                2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+                2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+                1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+                2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+                2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+                2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2
+                2 2 2 2 1 1 1 1 2 2 2 2 2 2 2 2
+                2 2 2 2 2 1 1 1 2 2 2 2 2 2 2 2
+                2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 2
+                2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2
+                """),
+            SpriteKind.projectile)
+        esquerra.set_velocity(0, speed)
+        esquerra.set_position(30, 8)
+    elif (0) == (2):
+        dreta = sprites.create(img("""
+                8 8 8 8 8 8 8 8 1 8 8 8 8 8 8 8
+                8 8 8 8 8 8 8 8 1 1 8 8 8 8 8 8
+                8 8 8 8 8 8 8 8 1 1 1 8 8 8 8 8
+                8 8 8 8 8 8 8 8 1 1 1 1 8 8 8 8
+                8 8 8 8 8 8 8 8 1 1 1 1 1 8 8 8
+                1 1 1 1 1 1 1 1 1 1 1 1 1 1 8 8
+                1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 8
+                1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+                1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 8
+                1 1 1 1 1 1 1 1 1 1 1 1 1 1 8 8
+                8 8 8 8 8 8 8 8 1 1 1 1 1 8 8 8
+                8 8 8 8 8 8 8 8 1 1 1 1 8 8 8 8
+                8 8 8 8 8 8 8 8 1 1 1 8 8 8 8 8
+                8 8 8 8 8 8 8 8 1 1 8 8 8 8 8 8
+                8 8 8 8 8 8 8 8 1 8 8 8 8 8 8 8
+                """),
+            SpriteKind.projectile)
+    elif carril == 3:
+        up = sprites.create(img("""
+                a a a a a a a 1 a a a a a a a
+                a a a a a a 1 1 1 a a a a a a
+                a a a a a 1 1 1 1 1 a a a a a
+                a a a a 1 1 1 1 1 1 1 a a a a
+                a a a 1 1 1 1 1 1 1 1 1 a a a
+                a a 1 1 1 1 1 1 1 1 1 1 1 a a
+                a 1 1 1 1 1 1 1 1 1 1 1 1 1 a
+                1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+                a a a a a 1 1 1 1 1 a a a a a
+                a a a a a 1 1 1 1 1 a a a a a
+                a a a a a 1 1 1 1 1 a a a a a
+                a a a a a 1 1 1 1 1 a a a a a
+                a a a a a 1 1 1 1 1 a a a a a
+                a a a a a 1 1 1 1 1 a a a a a
+                a a a a a 1 1 1 1 1 a a a a a
+                a a a a a 1 1 1 1 1 a a a a a
+                """),
+            SpriteKind.projectile)
+        up.set_velocity(0, speed)
+        up.set_position(60, 8)
+    else:
+        down = sprites.create(img("""
+                5 5 5 5 5 1 1 1 1 1 5 5 5 5 5
+                5 5 5 5 5 1 1 1 1 1 5 5 5 5 5
+                5 5 5 5 5 1 1 1 1 1 5 5 5 5 5
+                5 5 5 5 5 1 1 1 1 1 5 5 5 5 5
+                5 5 5 5 5 1 1 1 1 1 5 5 5 5 5
+                5 5 5 5 5 1 1 1 1 1 5 5 5 5 5
+                5 5 5 5 5 1 1 1 1 1 5 5 5 5 5
+                5 5 5 5 5 1 1 1 1 1 5 5 5 5 5
+                1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+                5 1 1 1 1 1 1 1 1 1 1 1 1 1 5
+                5 5 1 1 1 1 1 1 1 1 1 1 1 5 5
+                5 5 5 1 1 1 1 1 1 1 1 1 5 5 5
+                5 5 5 5 1 1 1 1 1 1 1 5 5 5 5
+                5 5 5 5 5 1 1 1 1 1 5 5 5 5 5
+                5 5 5 5 5 5 1 1 1 5 5 5 5 5 5
+                5 5 5 5 5 5 5 1 5 5 5 5 5 5 5
+                """),
+            SpriteKind.projectile)
+        down.set_velocity(0, speed)
+        down.set_position(100, 8)
     speed += 2
-}
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    bailarin.setPosition(130, 100)
+
+def on_right_pressed():
+    global note
+    bailarin.set_position(130, 100)
     note = 2
-})
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    bailarin.setPosition(30, 100)
+controller.right.on_event(ControllerButtonEvent.PRESSED, on_right_pressed)
+
+def on_left_pressed():
+    global note
+    bailarin.set_position(30, 100)
     note = 1
-})
-function crear_personatge () {
-    bailarin = sprites.create(img`
-        . . . . . . f f f f . . . . . . 
-        . . . . f f f 2 2 f f f . . . . 
-        . . . f f f 2 2 2 2 f f f . . . 
-        . . f f f e e e e e e f f f . . 
-        . . f f e 2 2 2 2 2 2 e e f . . 
-        . . f e 2 f f f f f f 2 e f . . 
-        . . f f f f e e e e f f f f . . 
-        . f f e f b f 4 4 f b f e f f . 
-        . f e e 4 1 f d d f 1 4 e e f . 
-        . . f e e d d d d d d e e f . . 
-        . . . f e e 4 4 4 4 e e f . . . 
-        . . e 4 f 2 2 2 2 2 2 f 4 e . . 
-        . . 4 d f 2 2 2 2 2 2 f d 4 . . 
-        . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . . f f . . f f . . . . . 
-        `, SpriteKind.Player)
-    bailarin.setPosition(80, 100)
+controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
+
+def crear_personatge():
+    global bailarin, speed
+    bailarin = sprites.create(img("""
+            . . . . . . f f f f . . . . . .
+            . . . . f f f 2 2 f f f . . . .
+            . . . f f f 2 2 2 2 f f f . . .
+            . . f f f e e e e e e f f f . .
+            . . f f e 2 2 2 2 2 2 e e f . .
+            . . f e 2 f f f f f f 2 e f . .
+            . . f f f f e e e e f f f f . .
+            . f f e f b f 4 4 f b f e f f .
+            . f e e 4 1 f d d f 1 4 e e f .
+            . . f e e d d d d d d e e f . .
+            . . . f e e 4 4 4 4 e e f . . .
+            . . e 4 f 2 2 2 2 2 2 f 4 e . .
+            . . 4 d f 2 2 2 2 2 2 f d 4 . .
+            . . 4 4 f 4 4 5 5 4 4 f 4 4 . .
+            . . . . . f f f f f f . . . . .
+            . . . . . f f . . f f . . . . .
+            """),
+        SpriteKind.player)
+    bailarin.set_position(80, 100)
     speed = 40
-    info.setScore(0)
-    info.setLife(3)
-    music.setTempo(120)
-}
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    info.set_score(0)
+    info.set_life(3)
+    music.set_tempo(120)
+
+def on_on_overlap(sprite, otherSprite):
+    global note2
     sprites.destroy(otherSprite, effects.spray, 100)
-    music.setVolume(112)
-    info.changeScoreBy(1)
+    music.set_volume(112)
+    info.change_score_by(1)
     note2 = randint(0, 1)
-    if (note == 1) {
-        if (note2 == 0) {
-            music.play(music.tonePlayable(262, music.beat(BeatFraction.Half)), music.PlaybackMode.UntilDone)
-        } else {
-            music.play(music.tonePlayable(294, music.beat(BeatFraction.Half)), music.PlaybackMode.UntilDone)
-        }
-    } else if (note == 2) {
-        if (note2 == 0) {
-            music.play(music.tonePlayable(330, music.beat(BeatFraction.Half)), music.PlaybackMode.UntilDone)
-        } else {
-            music.play(music.tonePlayable(349, music.beat(BeatFraction.Half)), music.PlaybackMode.UntilDone)
-        }
-    } else if (note == 3) {
-        if (note2 == 0) {
-            music.play(music.tonePlayable(392, music.beat(BeatFraction.Half)), music.PlaybackMode.UntilDone)
-        } else {
-            music.play(music.tonePlayable(440, music.beat(BeatFraction.Half)), music.PlaybackMode.UntilDone)
-        }
-    } else if (note == 4) {
-        if (note2 == 0) {
-            music.play(music.tonePlayable(494, music.beat(BeatFraction.Half)), music.PlaybackMode.UntilDone)
-        } else {
-            music.play(music.tonePlayable(523, music.beat(BeatFraction.Half)), music.PlaybackMode.UntilDone)
-        }
-    } else {
-    	
-    }
-})
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    bailarin.setPosition(60, 100)
+    if note == 1:
+        if note2 == 0:
+            music.play(music.tone_playable(262, music.beat(BeatFraction.HALF)),
+                music.PlaybackMode.UNTIL_DONE)
+        else:
+            music.play(music.tone_playable(294, music.beat(BeatFraction.HALF)),
+                music.PlaybackMode.UNTIL_DONE)
+    elif note == 2:
+        if note2 == 0:
+            music.play(music.tone_playable(330, music.beat(BeatFraction.HALF)),
+                music.PlaybackMode.UNTIL_DONE)
+        else:
+            music.play(music.tone_playable(349, music.beat(BeatFraction.HALF)),
+                music.PlaybackMode.UNTIL_DONE)
+    elif note == 3:
+        if note2 == 0:
+            music.play(music.tone_playable(392, music.beat(BeatFraction.HALF)),
+                music.PlaybackMode.UNTIL_DONE)
+        else:
+            music.play(music.tone_playable(440, music.beat(BeatFraction.HALF)),
+                music.PlaybackMode.UNTIL_DONE)
+    elif note == 4:
+        if note2 == 0:
+            music.play(music.tone_playable(494, music.beat(BeatFraction.HALF)),
+                music.PlaybackMode.UNTIL_DONE)
+        else:
+            music.play(music.tone_playable(523, music.beat(BeatFraction.HALF)),
+                music.PlaybackMode.UNTIL_DONE)
+    else:
+        pass
+sprites.on_overlap(SpriteKind.player, SpriteKind.projectile, on_on_overlap)
+
+def on_up_pressed():
+    global note
+    bailarin.set_position(60, 100)
     note = 3
-})
-info.onLifeZero(function () {
-    game.gameOver(true)
-})
-scene.onHitWall(SpriteKind.Projectile, function (sprite2, location) {
+controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
+
+def on_life_zero():
+    game.game_over(True)
+info.on_life_zero(on_life_zero)
+
+def on_hit_wall(sprite2, location):
     sprites.destroy(sprite2, effects.fire, 100)
-    info.changeLifeBy(-1)
-    music.play(music.melodyPlayable(music.jumpDown), music.PlaybackMode.UntilDone)
-})
-let note2 = 0
-let down: Sprite = null
-let up: Sprite = null
-let dreta: Sprite = null
-let speed = 0
-let esquerra: Sprite = null
-let carril = 0
-let note = 0
-let bailarin: Sprite = null
-scene.setBackgroundImage(img`
+    info.change_life_by(-1)
+    music.play(music.melody_playable(music.jump_down),
+        music.PlaybackMode.UNTIL_DONE)
+scene.on_hit_wall(SpriteKind.projectile, on_hit_wall)
+
+note2 = 0
+down: Sprite = None
+up: Sprite = None
+dreta: Sprite = None
+speed = 0
+esquerra: Sprite = None
+carril = 0
+note = 0
+bailarin: Sprite = None
+scene.set_background_image(img("""
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -295,19 +317,19 @@ scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
-    `)
-effects.starField.startScreenEffect()
+    """))
+effects.star_field.start_screen_effect()
 crear_personatge()
-// Esto hace que la comprobación se ejecute en cada momento del juego
-game.onUpdate(function () {
-    for (let proyectil of sprites.allOfKind(SpriteKind.Projectile)) {
-        // Si alguno ha bajado demasiado (cerca del borde 120)
-        if (proyectil.y > 115) {
+# Esto hace que la comprobación se ejecute en cada momento del juego
+
+def on_on_update():
+    for proyectil in sprites.all_of_kind(SpriteKind.projectile):
+        # Si alguno ha bajado demasiado (cerca del borde 120)
+        if proyectil.y > 115:
             sprites.destroy(proyectil)
-            info.changeLifeBy(-1)
-        }
-    }
-})
-game.onUpdateInterval(500, function () {
+            info.change_life_by(-1)
+game.on_update(on_on_update)
+
+def on_update_interval():
     proyectiles()
-})
+game.on_update_interval(500, on_update_interval)
